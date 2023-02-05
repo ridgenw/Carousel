@@ -21,7 +21,7 @@ public struct NodeModel: Codable, Hashable, Identifiable {
 // Class holding the cards id and content
 @available(iOS 14.0, *)
 public class UIStateModel: ObservableObject {
-    init() {}
+   public init() { }
     @Published var activeCard: Int = 0
     @Published var screenDrag: CGFloat = 0.0
     @Published var cards: [NodeModel] = [
