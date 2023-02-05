@@ -55,7 +55,7 @@ public struct Carousel <Items : View> : View {
     
     @GestureState var isDetectingLongPress = false
     @Namespace var namespace
-    @StateObject var UIState = UIStateModel()
+    @ObservedObject var UIState = UIStateModel()
     
     public init(
         numberOfItems: CGFloat,
@@ -171,8 +171,3 @@ public struct Item<Content: View>: View {
     }
 }
 
-@available(iOS 14.0, *)
-public struct NodeModel: Decodable, Hashable, Identifiable {
-   public let id: Int
-    let profileName: String
-}

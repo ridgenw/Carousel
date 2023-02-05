@@ -12,6 +12,12 @@ public class AnimationModel: ObservableObject {
     @Published var gradientArray: [Color] = [Color.purple, Color(UIColor.purple)]
 }
 
+@available(iOS 14.0, *)
+public struct NodeModel: Codable, Hashable, Identifiable {
+   public let id: Int
+    let profileName: String
+}
+
 // Class holding the cards id and content
 @available(iOS 14.0, *)
 public class UIStateModel: ObservableObject {
