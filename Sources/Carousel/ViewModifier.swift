@@ -8,6 +8,7 @@ public struct IconCarousel: ViewModifier {
     @State private var coverSquareAnimation = false
     @State private var isActivated = false
     @Namespace var nspace
+    @State var data: [Any]
     
    public func body(content: Content) -> some View {       
         return ZStack{
@@ -23,7 +24,7 @@ public struct IconCarousel: ViewModifier {
                     }
                 } else {
                     ZStack{
-                        CarouselView()
+                        CarouselView(data: data)
                             .opacity(forEachOpactiy ? 1 : 0)
                             .environmentObject(UIState)
                             .environmentObject(animate)
