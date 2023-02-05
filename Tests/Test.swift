@@ -9,3 +9,9 @@ final class CarouselTests: XCTestCase {
         XCTAssertEqual(Carousel().text, "Hello, World!")
     }
 }
+
+public struct CarouselView_Preview_Providers: PreviewProvider {
+    static public var previews: some View {
+        CarouselView()
+    }
+}
