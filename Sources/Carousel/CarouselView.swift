@@ -6,17 +6,18 @@ public struct CarouselView: View {
     @EnvironmentObject var model: AnimationModel
     @State private var isActive = false
     @Namespace var nspace
+    @State var data: [NodeArrayData]
    public var body: some View {
         let spacing: CGFloat = 16
         let widthOfHiddenCards: CGFloat = 32
         let cardHeight: CGFloat = 279
-        let items: [NodeArrayData] = UIState.cards
+        
         
         return NavigationView {
             Background {
-                Carousel(numberOfItems: CGFloat(items.count), spacing: spacing, widthOfHiddenCards: widthOfHiddenCards)
+                Carousel(numberOfItems: CGFloat(data.count), spacing: spacing, widthOfHiddenCards: widthOfHiddenCards)
                 {
-                    ForEach(items, id: \.self.id ) { item in
+                    ForEach(data, id: \.self.id ) { item in
                         ZStack{
                             Item( _id: Int(item.id),
                                   spacing: spacing,
