@@ -36,8 +36,14 @@ public class UIStateModel: ObservableObject {
         NodeModel(id: 8, profileName: "Title 9")
     ]
    public class Gig: ObservableObject {
-        public let id: Int = 0
-        let string: String = "num 3" 
+        public let id: Int
+        let string: String
+       
+       init(id: Int, text:String) {
+           self.id = id
+           self.string = text
+       }
     }
+    
 }
 
