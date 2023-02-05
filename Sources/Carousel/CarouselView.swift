@@ -6,7 +6,7 @@ public struct CarouselView: View {
     @EnvironmentObject var model: AnimationModel
     @State private var isActive = false
     @Namespace var nspace
-    @State var data: [NodeModel]
+    @State var data: []
    public var body: some View {
         let spacing: CGFloat = 16
         let widthOfHiddenCards: CGFloat = 32
@@ -17,9 +17,9 @@ public struct CarouselView: View {
             Background {
                 Carousel(numberOfItems: CGFloat(data.count), spacing: spacing, widthOfHiddenCards: widthOfHiddenCards)
                 {
-                    ForEach(data, id: \.self.id ) { item in
+                    ForEach(data, id: \.self) { item in
                         ZStack{
-                            Item( _id: Int(item.id),
+                            Item( _id: Int(item),
                                   spacing: spacing,
                                   widthOfHiddenCards: widthOfHiddenCards,
                                   cardHeight: cardHeight)
