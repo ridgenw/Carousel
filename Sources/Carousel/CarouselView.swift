@@ -6,14 +6,14 @@ public struct CarouselView: View {
     @EnvironmentObject var model: AnimationModel
     @State private var isActive = false
     @Namespace var nspace
-    @State var data: [Any]
+    @State var data = [UIStateModel.Gig]()
+    
     
    public var body: some View {
         let spacing: CGFloat = 16
         let widthOfHiddenCards: CGFloat = 32
         let cardHeight: CGFloat = 279
-       let data = UIState.cards
-        
+       
         return NavigationView {
             Background {
                 Carousel(numberOfItems: CGFloat(data.count), spacing: spacing, widthOfHiddenCards: widthOfHiddenCards)
@@ -25,7 +25,7 @@ public struct CarouselView: View {
                                   widthOfHiddenCards: widthOfHiddenCards,
                                   cardHeight: cardHeight)
                             {
-                                Text("\(item.profileName)")
+                                Text("\(item.string)")
                                     .font(.largeTitle)
                                     .fontWeight(.heavy)
                                     .opacity(model.titleFade ? 1 : 0)

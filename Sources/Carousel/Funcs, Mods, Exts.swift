@@ -51,7 +51,7 @@ public extension View {
 
 @available(iOS 14.0, *)
 public extension View {
-    func carousel(_ data: [Any]) -> some View {
+    func carousel(data: [UIStateModel.Gig]) -> some View {
         modifier(IconCarousel(data: data))
     }
 }

@@ -35,5 +35,9 @@ public class UIStateModel: ObservableObject {
         NodeModel(id: 7, profileName: "Title 8"),
         NodeModel(id: 8, profileName: "Title 9")
     ]
+   public class Gig: ObservableObject {
+        public let id: Int = 0
+        let string: String = "num 3" 
+    }
 }
 
