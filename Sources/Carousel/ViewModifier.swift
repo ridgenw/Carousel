@@ -8,7 +8,7 @@ public struct IconCarousel: ViewModifier {
     @State private var coverSquareAnimation = false
     @State private var isActivated = false
     @Namespace var nspace
-    @State var data: [NodeArrayData]
+    @State var data: [NodeModel]
     
     
    public func body(content: Content) -> some View {

@@ -48,3 +48,10 @@ public extension View {
         modifier(GradientBackground())
     }
 }
+
+@available(iOS 14.0, *)
+public extension View {
+    func carousel(_ data: [NodeModel]) -> some View {
+        modifier(IconCarousel(data: data))
+    }
+}

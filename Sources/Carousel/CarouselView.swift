@@ -6,7 +6,7 @@ public struct CarouselView: View {
     @EnvironmentObject var model: AnimationModel
     @State private var isActive = false
     @Namespace var nspace
-    @State var data: [NodeArrayData]
+    @State var data: [NodeModel]
    public var body: some View {
         let spacing: CGFloat = 16
         let widthOfHiddenCards: CGFloat = 32
@@ -172,7 +172,7 @@ public struct Item<Content: View>: View {
 }
 
 @available(iOS 14.0, *)
-public struct NodeArrayData: Decodable, Hashable, Identifiable {
+public struct NodeModel: Decodable, Hashable, Identifiable {
    public let id: Int
     let profileName: String
 }
