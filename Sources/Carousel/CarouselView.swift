@@ -1,45 +1,58 @@
 import SwiftUI
 
 @available(iOS 14.0, *)
-public struct CarouselView: View {
+public struct CarouselView: ViewModifier {
     @EnvironmentObject var UIState: UIStateModel
     @EnvironmentObject var model: AnimationModel
     @State private var isActive = false
     @Namespace var nspace
-    @State var data = [UIStateModel.Gig]()
+    @State public var data: [UIStateModel.Gig]
     
+    public init(data: [UIStateModel.Gig]) {
+        self.data = data
+    }
     
-   public var body: some View {
+    public func body(content: Content) ->  some View {
         let spacing: CGFloat = 16
         let widthOfHiddenCards: CGFloat = 32
         let cardHeight: CGFloat = 279
-       
+    
         return NavigationView {
-            Background {
-                Carousel(numberOfItems: CGFloat(data.count), spacing: spacing, widthOfHiddenCards: widthOfHiddenCards)
-                {
-                    ForEach(data, id: \.self.id) { item in
-                        ZStack{
-                            Item( _id: Int(item.id),
-                                  spacing: spacing,
-                                  widthOfHiddenCards: widthOfHiddenCards,
-                                  cardHeight: cardHeight)
-                            {
-                                Text("\(item.string)")
-                                    .font(.largeTitle)
-                                    .fontWeight(.heavy)
-                                    .opacity(model.titleFade ? 1 : 0)
+            ZStack{
+                content
+                
+                Background {
+                    Carousel(numberOfItems: CGFloat(data.count), spacing: spacing, widthOfHiddenCards: widthOfHiddenCards)
+                    {
+                        ForEach(data, id: \.self.id) { item in
+                            ZStack{
+                                Item( _id: Int(item.id),
+                                      spacing: spacing,
+                                      widthOfHiddenCards: widthOfHiddenCards,
+                                      cardHeight: cardHeight)
+                                {
+                                    Text("\(item.string)")
+                                        .font(.largeTitle)
+                                        .fontWeight(.heavy)
+//                                        .opacity(model.titleFade ? 1 : 0)
+                                }
+                                .foregroundColor(Color.white)
+                                .background(Color.black)
+                                .cornerRadius(25)
+                                .transition(AnyTransition.slide)
                             }
-                            .foregroundColor(Color.white)
-                            .background(Color.black)
-                            .cornerRadius(25)
-                            .transition(AnyTransition.slide)
                         }
                     }
                 }
             }
-            
         }
+    }
+}
+
+@available(iOS 14.0, *)
+public extension View {
+    func carouselMod(data: [UIStateModel.Gig]) -> some View {
+        modifier(CarouselView(data: data))
     }
 }
 

@@ -5,6 +5,12 @@ import SwiftUI
 public struct CircleView: View {
     @ObservedObject var model: AnimationModel
     @Namespace var nspace
+    @State var data: [UIStateModel.Gig]
+    public init(model: AnimationModel, data: [UIStateModel.Gig]) {
+        self.model = model
+        self.data = data
+    }
+    
     public var body: some View {
         ZStack {
             if !model.selected {
@@ -42,6 +48,8 @@ public struct CircleView: View {
                 }
             }
         }
+        .carouselMod(data: data)
+
     }
 }
 

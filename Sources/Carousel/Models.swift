@@ -10,6 +10,8 @@ public class AnimationModel: ObservableObject {
     @Published var titleFade = false
     
     @Published var gradientArray: [Color] = [Color.purple, Color(UIColor.purple)]
+    
+    public init() { }
 }
 
 @available(iOS 14.0, *)
