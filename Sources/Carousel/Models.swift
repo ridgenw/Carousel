@@ -27,15 +27,5 @@ public class UIStateModel: ObservableObject {
     @Published var activeCard: Int = 0
     @Published var screenDrag: CGFloat = 0.0
     @Published var cards: [NodeModel] = []
-   public class Gig: ObservableObject {
-        public let id: Int
-        let string: String
-       
-       public init(id: Int, text:String) {
-           self.id = id
-           self.string = text
-       }
-    }
-    
 }
 

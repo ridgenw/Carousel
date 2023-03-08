@@ -1,37 +1,31 @@
 import SwiftUI
 
 @available(iOS 14.0, *)
-public struct CarouselView: ViewModifier {
+public struct CarouselView: View {
     @EnvironmentObject var UIState: UIStateModel
     @EnvironmentObject var model: AnimationModel
     @State private var isActive = false
     @Namespace var nspace
-    @State public var data: [UIStateModel.Gig]
+    @State public var items: [NodeModel] = NodeModel(id: 0, profileName: "Default")
     
-    public init(data: [UIStateModel.Gig]) {
-        self.data = data
-    }
-    
-    public func body(content: Content) ->  some View {
+    public var body: some View {
         let spacing: CGFloat = 16
         let widthOfHiddenCards: CGFloat = 32
         let cardHeight: CGFloat = 279
     
-        return NavigationView {
+        NavigationView {
             ZStack{
-                content
-                
                 Background {
-                    Carousel(numberOfItems: CGFloat(data.count), spacing: spacing, widthOfHiddenCards: widthOfHiddenCards)
+                    Carousel(numberOfItems: CGFloat(items.count), spacing: spacing, widthOfHiddenCards: widthOfHiddenCards)
                     {
-                        ForEach(data, id: \.self.id) { item in
+                        ForEach(items, id: \.self.id) { item in
                             ZStack{
                                 Item( _id: Int(item.id),
                                       spacing: spacing,
                                       widthOfHiddenCards: widthOfHiddenCards,
                                       cardHeight: cardHeight)
                                 {
-                                    Text("\(item.string)")
+                                    Text("\(item.profileName)")
                                         .font(.largeTitle)
                                         .fontWeight(.heavy)
 //                                        .opacity(model.titleFade ? 1 : 0)
@@ -49,12 +43,12 @@ public struct CarouselView: ViewModifier {
     }
 }
 
-@available(iOS 14.0, *)
-public extension View {
-    func carouselMod(data: [UIStateModel.Gig]) -> some View {
-        modifier(CarouselView(data: data))
-    }
-}
+//@available(iOS 14.0, *)
+//public extension View {
+//    func carouselMod(data: [UIStateModel.Gig]) -> some View {
+//        modifier(CarouselView(data: data))
+//    }
+//}
 
 
 
