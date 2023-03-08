@@ -10,6 +10,8 @@ public struct IconCarousel: View {
     @Namespace var nspace
     @State var items: [NodeModel]
     
+    public init() {}
+    
     public var body: some View {
             ZStack {
                 if !animate.profileArrayShown {
