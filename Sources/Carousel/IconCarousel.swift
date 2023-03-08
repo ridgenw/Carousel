@@ -11,7 +11,6 @@ public struct IconCarousel: View {
     @State var items: [NodeModel]
     
     public var body: some View {
-                .opacity(animate.selected ? 0 : 1)
             ZStack {
                 if !animate.profileArrayShown {
                     ZStack {

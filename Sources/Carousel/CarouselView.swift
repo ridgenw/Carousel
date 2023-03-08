@@ -6,7 +6,7 @@ public struct CarouselView: View {
     @EnvironmentObject var model: AnimationModel
     @State private var isActive = false
     @Namespace var nspace
-    @State public var items: [NodeModel] = NodeModel(id: 0, profileName: "Default")
+    @State public var items: [NodeModel] = [NodeModel(id: 0, profileName: "Default")]
     
     public var body: some View {
         let spacing: CGFloat = 16

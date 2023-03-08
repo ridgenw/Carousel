@@ -5,7 +5,6 @@ import SwiftUI
 public struct CircleView: View {
     @ObservedObject var model: AnimationModel
     @Namespace var nspace
-    @State var items: NodeModel
     
     public var body: some View {
         ZStack {
@@ -44,6 +43,7 @@ public struct CircleView: View {
                 }
             }
         }
+
     }
 }
 
